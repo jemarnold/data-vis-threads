@@ -197,9 +197,9 @@ model_data <- cbind(newdata, pred) |>
 ggplot(GE_data, aes(x = workload, y = GE)) +
     labs(
         title = "Gross Efficiency (GE) increases **logarithmically** with power output",
-        subtitle = "Reproduced from Ettema & Lorås, 2009. Fig. 2d. DOI: 10.1007/s00421-009-1008-7",
+        subtitle = "Reproduced from Ettema & Lorås, 2009. Fig. 2d.",
         caption = str_glue(
-            "**Data**: derived from stochiometric equations | **Visuals**: {social_caption}"
+            "**Data**: DOI: 10.1007/s00421-009-1008-7 | **Visuals**: {social_caption}"
         )
     ) +
     theme(
