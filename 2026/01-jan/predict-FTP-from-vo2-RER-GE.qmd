@@ -201,3 +201,22 @@ So for this specific question “is it possible to achieve an FTP of 380 W at 5.
 The answer is yes, with elite-level metabolic efficiency \~24% and fractional threshold \~90%VO2max
 
 \*How\* to achieve that is an entirely different question which I don't have code for (yet 😉)
+
+
+```{r}
+#| label: write-readme
+#| include: false
+
+readme_content <- str_glue("
+![](figures/predict-ftp-from-vo2-rer-ge-1.png)
+
+![](figures/ge-power-model-1.png)
+
+**HTML report:** [predict-FTP-from-vo2-RER-GE.html](predict-FTP-from-vo2-RER-GE.html)
+
+`code`: [predict-FTP-from-vo2-RER-GE.qmd](predict-FTP-from-vo2-RER-GE.qmd)
+")
+
+writeLines(readme_content, "README.md")
+```
+
