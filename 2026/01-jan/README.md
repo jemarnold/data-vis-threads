@@ -2,6 +2,6 @@
 
 ![](figures/ge-power-model-1.png)
 
-**HTML report:** [predict-FTP-from-vo2-RER-GE.html](predict-FTP-from-vo2-RER-GE.html)
+**HTML**: [predict-FTP-from-vo2-RER-GE.html](https://htmlpreview.github.io/?https://github.com/jemarnold/data-vis-threads/blob/main/2026/01-jan/predict-FTP-from-vo2-RER-GE.html)
 
 `code`: [predict-FTP-from-vo2-RER-GE.qmd](predict-FTP-from-vo2-RER-GE.qmd)
