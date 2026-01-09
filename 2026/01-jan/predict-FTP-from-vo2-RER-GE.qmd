@@ -84,7 +84,6 @@ We just need reasonable estimates for RER substrate oxidation and metabolic effi
 
 ```{r figure-1-percent-vo2max-FTP}
 #| label: predict-ftp-from-vo2-rer-ge
-#| fig-alt: Figure visualising the percent of a VO2max of 5.0 L/min required to produce functional threshold power (FTP) between 300 and 400 W, with isolines for gross metabolic efficiency (GE, %) from 20-25% and RER at each GE value between 0.85-0.95. The question was “is it possible to achieve an FTP of 380 W at a VO2max of 5.0 L/min (71 ml/kg/min at 71kg bodyweight)?” Based on these calculations, that would require somewhere around 24% GE and ~90% VO2max, which is just about physiologically plausible for an elite male cyclist… but would certainly take some work to achieve.
 #| cache: true
 #| code-fold: true
 #| code-summary: "Show figure 1 code"
@@ -94,7 +93,7 @@ weight <- 71 ## kg
 VO2max <- VO2max_rel / 1000 * weight ## ≈ 5.0 L/min
 power <- seq(300, 400, by = 10) ## W
 RER <- seq(0.85, 0.95, 0.02) ## RER at threshold
-GE <- (0.04824536 * log(power) - 0.05657161) + 0.025 ## % derived from Ettema & Lorås, 2009
+GE <- 0.04824536 * log(power) - 0.05657161 ## % derived from Ettema & Lorås, 2009
 GE <- round(seq(min(GE) - 0.025, max(GE) + 0.025, 0.01), 2)
 GE <- seq(0.2, 0.25, 0.01) ## use pretty GE range anyway
 
@@ -156,6 +155,9 @@ ggplot(df, aes(x = power, y = VO2_rel, group = interaction(RER, GE), colour = fa
     )
 ```
 
+Figure visualising the percent of a VO2max of 5.0 L/min required to produce functional threshold power (FTP) between 300 and 400 W, with isolines for gross metabolic efficiency (GE, %) from 20-25% and RER at each GE value between 0.85-0.95. The question was “is it possible to achieve an FTP of 380 W at a VO2max of 5.0 L/min (71 ml/kg/min at 71kg bodyweight)?” Based on these calculations, that would require somewhere around 24% GE and ~90% VO2max, which is just about physiologically plausible for an elite male cyclist… but would certainly take some work to achieve.
+
+
 ## Post 2
 
 Reasonable estimates for gross metabolic efficiency (GE) for trained cyclists is 15-25%
@@ -166,7 +168,9 @@ Prediction model: GE = 0.0482 \* log(power) - 0.0566
 
 90% prediction interval for individual values is around ± 2.5%
 
-![](figures/ge-power-model-1.png){fig-alt="Figure plotting individually observed gross efficiency (GE) values for cyclists across power output from 50 to 450 W, taken from published cross-sectional data in Ettema & Lorås, 2009. Efficiency in Cycling. A Review. https://www.researchgate.net/publication/24027428_Efficiency_in_cycling_A_review. A logarithmic model predicts GE as a function of PO, with 90% prediction intervals equivalent to ± 2.5% around the marginal estimate. e.g. at 250 W estimated GE = 21%, 90% PI = [18.5, 23.5]."}
+![](figures/ge-power-model-1.png)
+Figure plotting individually observed gross efficiency (GE) values for cyclists across power output from 50 to 450 W, taken from published cross-sectional data in Ettema & Lorås, 2009. Efficiency in Cycling. A Review. https://www.researchgate.net/publication/24027428_Efficiency_in_cycling_A_review. A logarithmic model predicts GE as a function of PO, with 90% prediction intervals equivalent to ± 2.5% around the marginal estimate. e.g. at 250 W estimated GE = 21%, 90% PI = [18.5, 23.5].
+
 
 ## Post 3
 
@@ -176,7 +180,9 @@ Most of the variance in GE comes from differences in cadence. Most of the rest c
 
 GE is probably trainable, but veeery slowly
 
-![](figures/ettema-loras-2009-efficiency-figure2d.jpg){fig-alt="Figure reproduced from Ettema & Lorås, 2009. Efficiency in Cycling. A Review. https://www.researchgate.net/publication/24027428_Efficiency_in_cycling_A_review. Figure description reads: Fig. 2 Overview of literature data explored in this review and used in the quantification of efficiency… d Same data as in b, but depicting a possible error of measurement of 5%. Thick curve is the average curve, based on the regression line in b. Thin curves indicate ranges if both metabolic rate and external power have deviation (error) of 5%, but in opposite directions. A thick vertical error bar indicates the same range if only one of the measures has a 5% deviation; the thin horizontal arrows indicate the efficiency difference following from this error."}
+![](figures/ettema-loras-2009-efficiency-figure2d.jpg)
+Figure reproduced from Ettema & Lorås, 2009. Efficiency in cycling: a review. Figure description reads: Fig. 2 Overview of literature data explored in this review and used in the quantification of efficiency. The different symbols indicate different studies. Figures a–d show the mean values at a particular cadence or external power for each study. a Gross efficiency against cadence. b Same data against external power... d Same data as in b, but depicting a possible error of measurement of 5%. Thick curve is the average curve, based on the regression line in b. Thin curves indicate ranges if both metabolic rate and external power have deviation (error) of 5%, but in opposite directions. A thick vertical error bar indicates the same range if only one of the measures has a 5% deviation; the thin horizontal arrows indicate the efficiency difference following from this error.
+
 
 ## Post 4
 
@@ -184,7 +190,9 @@ Typical reported range for fractional threshold (%VO2max \@ CP, FTP, MLSS, VT2, 
 
 I can’t find a good dataset for cyclists right now, so here is one for treadmill running (link & details in 📊Alt text)
 
-![](figures/Benitez-Munoz-2024-treadmill-fractional-VT2.jpg){fig-alt="Figure & table from Benítez-Muñoz et al, 2024. Differences in the ventilatory thresholds in treadmill according to training status in 971 males and 301 females: a cross-sectional study. https://pmc.ncbi.nlm.nih.gov/articles/PMC11829848/. Showing percent VO2max at ventilatory threshold 2 (close equivalence to critical power or functional threshold power) across a range of fitness levels in runners, from 85-92%. Running threshold will tend to be slightly higher %VO2max compared to cycling threshold, hence the low-end fitness estimate is higher than typically observed in cyclists. But the high-end estimate is probably similarly bounded around 90-92%."}
+![](figures/Benitez-Munoz-2024-treadmill-fractional-VT2.jpg)
+Figure & table from Benítez-Muñoz et al, 2024. Differences in the ventilatory thresholds in treadmill according to training status in 971 males and 301 females: a cross-sectional study. https://pmc.ncbi.nlm.nih.gov/articles/PMC11829848/. Showing percent VO2max at ventilatory threshold 2 (close equivalence to critical power or functional threshold power) across a range of fitness levels in runners, from 85-92%. Running threshold will tend to be slightly higher %VO2max compared to cycling threshold, hence the low-end fitness estimate is higher than typically observed in cyclists. But the high-end estimate is probably similarly bounded around 90-92%.
+
 
 ## Post 5
 
@@ -215,6 +223,13 @@ readme_content <- str_glue("
 **HTML**: [predict-FTP-from-vo2-RER-GE.html](https://htmlpreview.github.io/?https://github.com/jemarnold/data-vis-threads/blob/main/2026/01-jan/predict-FTP-from-vo2-RER-GE.html)
 
 `code`: [predict-FTP-from-vo2-RER-GE.qmd](predict-FTP-from-vo2-RER-GE.qmd)
+
+Old figures from the same model, not reproduced here.
+
+![](figures/carb-intake-updated.jpg)
+
+![](figures/internal-external-work-NOTUPDATED.jpg)
+
 ")
 
 writeLines(readme_content, "README.md")
