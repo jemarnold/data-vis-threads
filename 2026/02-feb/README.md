@@ -220,6 +220,9 @@ ggplot(df, aes(x = cv, y = vo2peak)) +
 
 </details>
 
+<img src="figures/figure-1-display-simulated-BxB-1.png"
+style="width:100.0%" data-fig-align="center" />
+
 <details>
 
 <summary>

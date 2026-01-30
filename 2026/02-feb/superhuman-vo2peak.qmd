@@ -218,7 +218,7 @@ ggplot(df, aes(x = cv, y = vo2peak)) +
 
 ```{r}
 #| label: figure-1-include
-#| eval: !expr knitr::is_latex_output() || knitr::pandoc_to() == "gfm"
+#| eval: !expr isFALSE(knitr::is_html_output())
 #| echo: false
 
 knitr::include_graphics("figures/figure-1-display-simulated-BxB-1.png")
