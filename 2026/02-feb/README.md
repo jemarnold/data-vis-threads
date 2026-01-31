@@ -445,6 +445,9 @@ ggplot(economy_df) +
 
 </details>
 
+<img src="figures/figure-2-economy-vo2peak-1.png" style="width:100.0%"
+data-fig-align="center" />
+
 <details>
 
 <summary>

@@ -399,6 +399,14 @@ ggplot(economy_df) +
     )
 ```
 
+```{r}
+#| label: figure-2-include
+#| eval: !expr isFALSE(knitr::is_html_output())
+#| echo: false
+
+## avoid re-rendering the figure in README.MD at the wrong scale
+knitr::include_graphics("figures/figure-2-economy-vo2peak-1.png")
+```
 <details>
 <summary>Figure description (click to expand)</summary>
 
