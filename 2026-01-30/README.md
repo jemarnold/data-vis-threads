@@ -135,7 +135,7 @@ social_caption <- "<span style='font-family:fa-brands'>&#xf09b; &#xe671;</span> 
 df <- expand_grid(
     cv = seq(0.02, 0.05, 0.005),
     # RR = seq(40, 70, 5), ## negligible influence on results
-    RR = 50 ## reasonable estimate for peak RR
+    RR = 70 ## reasonable estimate for peak RR
 ) |>
     mutate(
         samples = (RR / 60) * 30,  ## number of breaths within 30-sec
@@ -347,7 +347,7 @@ from 420-460 W.
 </details>
 
 This suggests his peak power was somewhere between 420-460 W. Let’s call
-it **440 W**.
+it **460 W**.
 
 From this, we can estimate a range for cycling economy from ~57 to 62
 W/L/min. This range is far below previous data observed in professional
@@ -390,7 +390,7 @@ df <- expand_grid(
 
 economy_df <- expand_grid(
     vo2peak = df$vo2peak, ## crudely estimated from expected BxB variance
-    power = 440, ## estimated from video
+    power = 460, ## estimated from video
 ) |>
     mutate(
         economy = power / (vo2peak * weight / 1000) ## W/L/min
