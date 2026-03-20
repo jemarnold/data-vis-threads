@@ -66,6 +66,9 @@ social_caption <- "<span style='font-family:fa-brands'>&#xf09b; &#xe671;</span> 
 <summary>Show figure 1 code</summary>
 
 ``` r
+## I haven't updated the style of the plot
+## it's a mess, but it gets the job done
+
 y_vals <- c(0.22, 0.23, 0.27, 0.27, 0.29, 0.35, 0.39, 0.42, 0.5, 0.48, 0.53)
 
 ggplot(df, aes(x = threshold, y = power)) +
@@ -201,6 +204,9 @@ ggplot(df, aes(x = threshold, y = power)) +
 
 </details>
 
+<img src="figures/figure-1-1.png" style="width:100.0%"
+data-fig-align="center" />
+
 <details>
 
 <summary>
@@ -222,9 +228,6 @@ threshold-like behaviours at different intensities, depending on which
 metabolic variable and analyses methods are used.
 
 </details>
-
-<img src="figures/figure-1-1.png" style="width:100.0%"
-data-fig-align="center" />
 
 An old figure, originally posted to twitter. Reproduced and updated on
 request.

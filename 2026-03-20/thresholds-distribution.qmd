@@ -76,7 +76,7 @@ social_caption <- "<span style='font-family:fa-brands'>&#xf09b; &#xe671;</span> 
 
 
 ```{r}
-#| label: raw data
+#| label: processed threshold data
 #| echo: false
 
 df <- tibble::tribble(
@@ -562,6 +562,9 @@ df <- tibble::tribble(
 #| code-summary: "Show figure 1 code"
 #| cache: true
 
+## I haven't updated the style of the plot
+## it's a mess, but it gets the job done
+
 y_vals <- c(0.22, 0.23, 0.27, 0.27, 0.29, 0.35, 0.39, 0.42, 0.5, 0.48, 0.53)
 
 ggplot(df, aes(x = threshold, y = power)) +
@@ -695,15 +698,6 @@ ggplot(df, aes(x = threshold, y = power)) +
     )
 ```
 
-
-<details>
-<summary>Show figure description</summary>
-
-A raincloud plot showing the distribution of 11 metabolic threshold estimation methods (lactate and ventilatory thresholds) across relative workload (% Wpeak) from two trials each in 21 female and male competitive cyclists. Thresholds are stacked vertically, colour-coded from red (FatMax; occuring at the lowest intensity) to pink (RER = 1.00, at the highest intensity), each displaying a kernel density curve, individual data points (n ≈ 42), and a white median marker. The intent is to visualise how various threshold estimates return values all along the range of relative intensity, thus suggesting that there is no single true intensity breakpoint, but rather that different methods find threshold-like behaviours at different intensities, depending on which metabolic variable and analyses methods are used.
-
-</details>
-
-
 ```{r}
 #| label: figure-1-include
 #| eval: !expr isFALSE(knitr::is_html_output())
@@ -722,6 +716,17 @@ knitr::include_graphics("figures/figure-1-1.png")
 #     dpi = 300,
 # )
 ```
+
+
+
+<details>
+<summary>Show figure description</summary>
+
+A raincloud plot showing the distribution of 11 metabolic threshold estimation methods (lactate and ventilatory thresholds) across relative workload (% Wpeak) from two trials each in 21 female and male competitive cyclists. Thresholds are stacked vertically, colour-coded from red (FatMax; occuring at the lowest intensity) to pink (RER = 1.00, at the highest intensity), each displaying a kernel density curve, individual data points (n ≈ 42), and a white median marker. The intent is to visualise how various threshold estimates return values all along the range of relative intensity, thus suggesting that there is no single true intensity breakpoint, but rather that different methods find threshold-like behaviours at different intensities, depending on which metabolic variable and analyses methods are used.
+
+</details>
+
+
 
 An old figure, originally posted to twitter. Reproduced and updated on request.
 
