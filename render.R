@@ -1,6 +1,6 @@
 
-title <- "superhuman-vo2peak"
+title <- "thresholds-distribution"
 
 quarto::quarto_render(
-    input = glue::glue("2026-01-30/{title}.qmd"),
+    input = glue::glue("2026-03-20/{title}.qmd"),
 )
