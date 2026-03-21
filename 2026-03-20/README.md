@@ -229,6 +229,12 @@ metabolic variable and analyses methods are used.
 
 </details>
 
+Data from Yogev et al., 2023:
+https://doi.org/10.3389/fspor.2023.1143393.
+
+Methods from: Jamnick et al., 2020:
+https://dx.doi.org/10.1007/s40279-020-01322-8
+
 An old figure, originally posted to twitter. Reproduced and updated on
 request.
 
