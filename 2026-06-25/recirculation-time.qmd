@@ -88,7 +88,7 @@ But we’re just reproducing what’s been known for the last century👇 #scien
 #| code-summary: "Show loading data code"
 #| cache: true
 
-df <- readRDS(file = "recirculation-df")
+df <- readRDS("recirculation-df")
 
 points_df <- tibble::tribble(
     ~time , ~VL_ICG_filt ,
@@ -264,4 +264,6 @@ paste0(
 
 ----
 
-Also worth noting their sample group was "normal" young individuals walking, while ours were well-trained competitive cyclists near V̇O₂max. But no detectable difference in bulk recirculation time? 🤔
+Also worth noting their sample group was "normal" young individuals, while ours were well-trained competitive cyclists. But still no detectable difference in bulk recirculation time? 🤔
+
+Anyway, data & figures here: https://github.com/jemarnold/data-vis-threads/tree/main/2026-06-25
