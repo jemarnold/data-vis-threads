@@ -1,0 +1,309 @@
+---
+title: Ultrasound Adipose Tissue Thickness ~ Calliper Skinfold Correlation
+author:
+    name: Jem Arnold [{{< fa brands github >}}](https://github.com/jemarnold/mnirs){target=\"_blank\"} [{{< fa brands linkedin >}}](https://www.linkedin.com/in/jem--arnold/){target=\"_blank\"} [{{< ai researchgate >}}](https://researchgate.net/profile/Jem-Arnold){target=\"_blank\"} [{{< ai orcid >}}](https://orcid.org/0000-0003-3908-9447){target=\"_blank\"}
+    email: jem@jemarnold.ca
+    affiliation:
+        name: |
+            School of Kinesiology\
+            The University of British Columbia\
+            Vancouver, BC, Canada
+date: last-modified
+format:
+    html:
+        self-contained: true
+        toc: true
+        code-fold: true
+    gfm:
+        output-file: README.md
+execute:
+    echo: true
+    message: false
+    warning: false
+    dpi: 300
+    fig-width: 8.66
+    fig-asp: 0.5
+    fig-align: center
+    out-width: "100%"
+knitr:
+    opts_chunk:
+        fig.path: "figures/"
+---
+
+```{r}
+#| label: setup
+#| code-summary: "Show setup code"
+
+library(tidyverse)
+library(ggpmisc)
+library(mnirs)
+library(lme4)
+library(lmerTest)
+library(rmcorr)
+library(emmeans)
+library(marginaleffects)
+
+theme_set(JAPackage::theme_JA(base_size = 16, base_family = "sans"))
+```
+
+::: {.callout-note}
+## Methods
+
+* Sample is **32** young, well-trained female and male competitive cyclists in the Netherlands in 2022.
+
+* Mix of patients with blood flow limitations in the iliac artery and healthy participants (pooled for this analysis).
+
+* Ultrasound adipose tissue thickness (ATT) vs calliper skinfold thickness (SKF).
+
+* Measurements taken at bilateral quadriceps (VL) at 1/3 distance from patella to greater trochanter.
+
+* Skinfold values divided by 2, comparable to ATT.
+
+:::
+
+## Data
+
+```{r}
+#| echo: false
+
+df <- readRDS("att-skf-df.rds")
+```
+
+```{r}
+#| label: data
+
+df
+
+## participants by sex
+df |>
+    distinct(id, sex) |>
+    count(sex)
+```
+
+## Figure 1: ATT vs Skinfold correlation
+
+* Dotted line: line of identity.
+
+* Dashed grey line: full group regression.
+
+* Coloured lines: blue is males, red is females.
+
+```{r}
+#| label: correlation-plot
+#| eval: !expr knitr::is_html_output()
+#| code-summary: "Show figure code"
+#| fig-asp: 0.667
+
+# fmt: skip
+ggplot(df, aes(x = att, y = skf, colour = sex, fill = sex)) +
+    labs(
+        title = "Correlation between Ultrasound **Adipose Tissue**<br>and Calliper **Skinfold** measurements",
+        subtitle = str_glue("n = 32 (9 F, 23 M) well-trained cyclists, bilateral quadriceps (VL)"),
+        x = "Adipose Tissue Thickness (mm)",
+        y = "Skinfold Thickness ÷ 2 (mm)"
+    ) +
+    scale_colour_mnirs() +
+    scale_fill_mnirs() +
+    coord_cartesian(xlim = c(0, NA), ylim = c(0, NA)) +
+    scale_x_continuous(
+        breaks = seq(0, 12, 2),
+        expand = expansion(c(0, 0.03))
+    ) +
+    scale_y_continuous(
+        breaks = seq(0, 18, 2),
+        expand = expansion(c(0, 0.03))
+    ) +
+    geom_abline(slope = 1, intercept = 0, linetype = "dotted") +
+    geom_point(fill = "white", size = 4.4, shape = 21, stroke = 1.5) +
+    geom_point(colour = "white", size = 4.2) +
+    geom_point(size = 5.0, shape = 21, stroke = 0, alpha = 0.6) +
+    geom_smooth(formula = y ~ x, method = "lm", se = TRUE, alpha = 0.2) +
+    geom_smooth(
+        inherit.aes = FALSE,
+        aes(x = att, y = skf),
+        formula = y ~ x, method = "lm", se = TRUE,
+        colour = "grey10", linetype = 2, alpha = 0.4
+    ) +
+    ## full group stats
+    stat_poly_eq(
+        use_label(c("eq"), other.mapping = aes(x = att, y = skf)),
+        inherit.aes = FALSE,
+        formula = y ~ x, method = "lm",
+        label.x = c(0.03), label.y = c(0.97),
+        colour = "grey10", size = 4.5
+    ) +
+    stat_correlation(
+        use_label(c("r", "rr", "p"), other.mapping = aes(x = att, y = skf)),
+        inherit.aes = FALSE,
+        method = "pearson", small.r = FALSE, small.p = TRUE,
+        label.x = c(0.03), label.y = c(0.92),
+        colour = "grey10", size = 4.5
+    ) +
+    ## per-sex stats
+    stat_poly_eq(
+        use_label(c("eq")),
+        formula = y ~ x, method = "lm",
+        label.x = c(0.03), label.y = c(0.83, 0.69), size = 4.5
+    ) +
+    stat_correlation(
+        use_label(c("r", "rr", "p")),
+        method = "pearson", small.r = FALSE, small.p = TRUE,
+        label.x = c(0.03), label.y = c(0.78, 0.64), size = 4.5
+    )
+```
+
+```{r}
+#| label: correlation-plot-include
+#| eval: !expr isFALSE(knitr::is_html_output())
+#| echo: false
+
+## avoid re-rendering the figure in README.MD at the wrong scale
+knitr::include_graphics("figures/correlation-plot-1.png")
+```
+
+## Repeated-measures correlation
+
+* Accounts for bilateral (L & R) measurements within participant.
+
+```{r}
+#| label: rmcorr
+
+rmcorr(
+    participant = id,
+    measure1 = att,
+    measure2 = skf,
+    dataset = df,
+)
+```
+
+
+## Figure 2: Skinfold bias & equivalence by sex
+
+* Bias (Δ) = SKF ÷ 2 − ATT, per leg. Positive values: skinfold overestimates adipose tissue.
+
+* Individual points & estimated marginal means [90% CI] from mixed effects model `delta ~ sex * leg + (1 | id)`, pooled over legs.
+
+* Two one-sided tests (TOST) with equivalence bounds chosen at **±1 mm** (shaded region): "*is SKF ÷ 2 within ±1 mm of ATT on average?*" Equivalence is supported when the full 90% CI lies within the shaded region.
+
+* Suggests a sex interaction, where skinfolds tend to overestimate adipose tissue more in females than in males.
+
+* Weak/inconclusive equivalence, sensitive to a couple of outliers in this small dataset.
+
+```{r}
+#| label: equivalence
+#| code-summary: "Show code"
+
+delta_df <- mutate(df, delta = skf - att)
+
+delta_fit <- lmer(delta ~ sex * leg + (1 | id), data = delta_df)
+
+## mean bias by sex, averaged over legs
+delta_emm <- emmeans(delta_fit, ~sex)
+
+## female vs male difference in bias
+delta_contrast <- contrast(delta_emm, "revpairwise") |>
+    confint() |>
+    as.data.frame()
+
+delta_contrast
+
+## equivalence bound (mm)
+eq_bound <- 1
+
+## TOST p-values with matching 90% CI, by sex, averaged over legs
+## population-level predictions (re.form = NA), between-participant df
+eq_df <- marginaleffects::avg_predictions(
+    delta_fit,
+    by = "sex",
+    re.form = NA,
+    conf_level = 0.90,
+    equivalence = c(-eq_bound, eq_bound),
+    df = n_distinct(delta_df$id) - 2
+) |>
+    as.data.frame()
+
+eq_df
+```
+
+```{r}
+#| label: equivalence-plot
+#| eval: !expr knitr::is_html_output()
+#| code-summary: "Show figure code"
+#| fig-asp: 0.667
+# fmt: skip
+ggplot(delta_df, aes(x = delta, y = sex, colour = sex, fill = sex)) +
+    labs(
+        title = "Calliper **Skinfold** bias relative to Ultrasound **Adipose Tissue** by sex",
+        subtitle = str_glue_data(
+            delta_contrast,
+            "Estimate [90% CI], equivalence bounds **±{eq_bound} mm**<br>",
+            "*Female − Male* bias: {round(estimate, 1)} [95% CI {round(lower.CL, 1)}, {round(upper.CL, 1)}] mm"
+        ),
+        x = "Skinfold ÷ 2 − Adipose Tissue (mm)",
+        y = NULL
+    ) +
+    theme(
+        legend.position = "none",
+        plot.title = ggtext::element_textbox(size = 18),
+        axis.text.y = element_text(size = 16, colour = "black", face = "bold"),
+    ) +
+    scale_colour_mnirs() +
+    scale_fill_mnirs() +
+    scale_x_continuous(breaks = seq(-2, 8, 1)) +
+    ## male on top
+    scale_y_discrete(limits = rev, expand = expansion(add = c(0.3, 0.7))) +
+    annotate(
+        "rect", xmin = -eq_bound, xmax = eq_bound, ymin = -Inf, ymax = Inf,
+        fill = "palegreen3", alpha = 0.5
+    ) +
+    geom_vline(xintercept = c(-eq_bound, eq_bound), linetype = "dashed") +
+    geom_vline(xintercept = 0) +
+    ## narrower spread for smaller female group
+    map2(c("Male", "Female"), c(0.25, 0.1), \(.sex, .width) {
+        .df <- filter(delta_df, sex == .sex)
+        list(
+            ggbeeswarm::geom_quasirandom(
+                data = .df, width = .width,
+                fill = "white", size = 4.4, shape = 21, stroke = 1.5,
+            ),
+            ggbeeswarm::geom_quasirandom(
+                data = .df, width = .width,
+                colour = "white", size = 4.2,
+            ),
+            ggbeeswarm::geom_quasirandom(
+                data = .df, width = .width,
+                size = 5.0, shape = 21, stroke = 0, alpha = 0.6,
+            )
+        )
+    }) +
+    geom_pointrange(
+        data = eq_df,
+        aes(x = estimate, xmin = conf.low, xmax = conf.high),
+        position = position_nudge(y = 0.35),
+        size = 2, linewidth = 1.5, shape = 21, fill = "white", stroke = 2
+    ) +
+    geom_text(
+        data = eq_df,
+        aes(x = estimate, label = str_glue("TOST p = {round(p.value.equiv, 2)}")),
+        position = position_nudge(y = 0.55),
+        size = 5, fontface = "bold"
+    )
+
+```
+
+```{r}
+#| label: equivalence-plot-include
+#| eval: !expr isFALSE(knitr::is_html_output())
+#| echo: false
+
+## avoid re-rendering the figure in README.MD at the wrong scale
+knitr::include_graphics("figures/equivalence-plot-1.png")
+```
+
+```{r}
+#| label: session-info
+#| code-summary: "Show sessionInfo()"
+#| collapse: true
+
+sessionInfo()
+```
