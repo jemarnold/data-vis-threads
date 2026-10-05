@@ -235,11 +235,11 @@ eq_df
     1   Male -0.5500000 0.3292406 -1.670511 0.1052207 3.24851 -1.1088072
     2 Female  0.7777778 0.5263274  1.477745 0.1498987 2.73794 -0.1155372
         conf.high df statistic.noninf statistic.nonsup p.value.noninf
-    1 0.008807165 30         1.366782       -4.7078036    0.090924980
-    2 1.671092766 30         3.377703       -0.4222129    0.001019844
+    1 0.008807155 30         1.366782       -4.7078037    0.090924976
+    2 1.671092772 30         3.377703       -0.4222129    0.001019844
       p.value.nonsup p.value.equiv
-    1   2.655174e-05    0.09092498
-    2   3.379401e-01    0.33794013
+    1   2.655173e-05    0.09092498
+    2   3.379401e-01    0.33794014
 
 ``` r
 # fmt: skip
@@ -306,7 +306,7 @@ ggplot(delta_df, aes(x = delta, y = sex, colour = sex, fill = sex)) +
 
 ``` r
 sessionInfo()
-## R version 4.5.3 (2026-03-11 ucrt)
+## R version 4.6.1 (2026-06-24 ucrt)
 ## Platform: x86_64-w64-mingw32/x64
 ## Running under: Windows 11 x64 (build 26100)
 ## 
@@ -325,37 +325,37 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] marginaleffects_0.32.0 emmeans_2.0.3          rmcorr_0.7.0          
-##  [4] lmerTest_3.2-1         lme4_2.0-1             Matrix_1.7-5          
-##  [7] mnirs_0.6.5.9000       ggpmisc_0.7.0          ggpp_0.6.0            
-## [10] lubridate_1.9.5        forcats_1.0.1          stringr_1.6.0         
-## [13] dplyr_1.2.1            purrr_1.2.2            readr_2.2.0           
-## [16] tidyr_1.3.2            tibble_3.3.1           ggplot2_4.0.3         
-## [19] tidyverse_2.0.0       
+##  [1] marginaleffects_1.0.0 emmeans_2.0.4         rmcorr_0.7.0         
+##  [4] lmerTest_3.2-1        lme4_2.0-6            Matrix_1.7-6         
+##  [7] mnirs_0.8.0           ggpmisc_1.0.0         ggpp_0.6.1           
+## [10] lubridate_1.9.5       forcats_1.0.1         stringr_1.6.0        
+## [13] dplyr_1.2.1           purrr_1.2.2           readr_2.2.0          
+## [16] tidyr_1.3.2           tibble_3.3.1          ggplot2_4.0.3        
+## [19] tidyverse_2.0.0      
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] tidyselect_1.2.1    psych_2.6.5         farver_2.1.2       
 ##  [4] S7_0.2.2            fastmap_1.2.0       digest_0.6.39      
 ##  [7] estimability_2.0.0  timechange_0.4.0    lifecycle_1.0.5    
-## [10] survival_3.8-6      magrittr_2.0.5      compiler_4.5.3     
-## [13] rlang_1.3.0         tools_4.5.3         utf8_1.2.6         
-## [16] yaml_2.3.12         data.table_1.18.4   knitr_1.51         
+## [10] survival_3.8-11     magrittr_2.0.5      compiler_4.6.1     
+## [13] rlang_1.3.0         tools_4.6.1         utf8_1.2.6         
+## [16] yaml_2.3.12         data.table_1.18.6.1 knitr_1.51         
 ## [19] mnormt_2.1.2        xml2_1.6.0          RColorBrewer_1.1-3 
-## [22] withr_3.0.3         numDeriv_2016.8-1.1 grid_4.5.3         
+## [22] withr_3.0.3         numDeriv_2016.8-1.1 grid_4.6.1         
 ## [25] JAPackage_0.1.0     xtable_1.8-8        scales_1.4.0       
-## [28] MASS_7.3-65         insight_1.5.1       cli_3.6.6          
-## [31] mvtnorm_1.4-1       rmarkdown_2.31      reformulas_0.4.4   
+## [28] MASS_7.3-66         insight_1.5.3       cli_3.6.6          
+## [31] mvtnorm_1.4-2       rmarkdown_2.32      reformulas_0.4.4   
 ## [34] generics_0.1.4      otel_0.2.0          tzdb_0.5.0         
-## [37] minqa_1.2.8         polynom_1.4-1       splines_4.5.3      
-## [40] parallel_4.5.3      vctrs_0.7.3         boot_1.3-32        
+## [37] minqa_1.2.8         polynom_1.4-1       splines_4.6.1      
+## [40] parallel_4.6.1      vctrs_0.7.3         boot_1.3-32        
 ## [43] jsonlite_2.0.0      SparseM_1.84-2      hms_1.1.4          
 ## [46] pbkrtest_0.5.5      glue_1.8.1          nloptr_2.2.1       
-## [49] ggtext_0.1.2        stringi_1.8.7       gtable_0.3.6       
+## [49] ggtext_0.2.0        stringi_1.8.9       gtable_0.3.6       
 ## [52] pillar_1.11.1       htmltools_0.5.9     quantreg_6.1       
 ## [55] R6_2.6.1            Rdpack_2.6.6        evaluate_1.0.5     
-## [58] lattice_0.22-9      rbibutils_2.4.1     png_0.1-9          
+## [58] lattice_0.23-1      rbibutils_2.4.1     png_0.1-9          
 ## [61] backports_1.5.1     gridtext_0.1.6      broom_1.0.13       
 ## [64] MatrixModels_0.5-4  Rcpp_1.1.2          coda_0.19-4.1      
-## [67] nlme_3.1-169        checkmate_2.3.4     xfun_0.59          
+## [67] nlme_3.1-171        checkmate_2.3.4     xfun_0.60          
 ## [70] pkgconfig_2.0.3
 ```
