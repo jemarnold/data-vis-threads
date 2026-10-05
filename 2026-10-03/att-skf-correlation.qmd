@@ -90,7 +90,6 @@ df |>
 
 ```{r}
 #| label: correlation-plot
-#| eval: !expr knitr::is_html_output()
 #| code-summary: "Show figure code"
 #| fig-asp: 0.667
 
@@ -152,14 +151,6 @@ ggplot(df, aes(x = att, y = skf, colour = sex, fill = sex)) +
     )
 ```
 
-```{r}
-#| label: correlation-plot-include
-#| eval: !expr isFALSE(knitr::is_html_output())
-#| echo: false
-
-## avoid re-rendering the figure in README.MD at the wrong scale
-knitr::include_graphics("figures/correlation-plot-1.png")
-```
 
 ## Repeated-measures correlation
 
@@ -227,7 +218,6 @@ eq_df
 
 ```{r}
 #| label: equivalence-plot
-#| eval: !expr knitr::is_html_output()
 #| code-summary: "Show figure code"
 #| fig-asp: 0.667
 # fmt: skip
@@ -291,14 +281,6 @@ ggplot(delta_df, aes(x = delta, y = sex, colour = sex, fill = sex)) +
 
 ```
 
-```{r}
-#| label: equivalence-plot-include
-#| eval: !expr isFALSE(knitr::is_html_output())
-#| echo: false
-
-## avoid re-rendering the figure in README.MD at the wrong scale
-knitr::include_graphics("figures/equivalence-plot-1.png")
-```
 
 ```{r}
 #| label: session-info

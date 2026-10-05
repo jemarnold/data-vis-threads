@@ -334,28 +334,30 @@ sessionInfo()
 ## [19] tidyverse_2.0.0      
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] tidyselect_1.2.1    psych_2.6.5         farver_2.1.2       
-##  [4] S7_0.2.2            fastmap_1.2.0       digest_0.6.39      
-##  [7] estimability_2.0.0  timechange_0.4.0    lifecycle_1.0.5    
-## [10] survival_3.8-11     magrittr_2.0.5      compiler_4.6.1     
-## [13] rlang_1.3.0         tools_4.6.1         utf8_1.2.6         
-## [16] yaml_2.3.12         data.table_1.18.6.1 knitr_1.51         
-## [19] mnormt_2.1.2        xml2_1.6.0          RColorBrewer_1.1-3 
-## [22] withr_3.0.3         numDeriv_2016.8-1.1 grid_4.6.1         
-## [25] JAPackage_0.1.0     xtable_1.8-8        scales_1.4.0       
-## [28] MASS_7.3-66         insight_1.5.3       cli_3.6.6          
-## [31] mvtnorm_1.4-2       rmarkdown_2.32      reformulas_0.4.4   
-## [34] generics_0.1.4      otel_0.2.0          tzdb_0.5.0         
-## [37] minqa_1.2.8         polynom_1.4-1       splines_4.6.1      
-## [40] parallel_4.6.1      vctrs_0.7.3         boot_1.3-32        
-## [43] jsonlite_2.0.0      SparseM_1.84-2      hms_1.1.4          
-## [46] pbkrtest_0.5.5      glue_1.8.1          nloptr_2.2.1       
-## [49] ggtext_0.2.0        stringi_1.8.9       gtable_0.3.6       
-## [52] pillar_1.11.1       htmltools_0.5.9     quantreg_6.1       
-## [55] R6_2.6.1            Rdpack_2.6.6        evaluate_1.0.5     
-## [58] lattice_0.23-1      rbibutils_2.4.1     png_0.1-9          
-## [61] backports_1.5.1     gridtext_0.1.6      broom_1.0.13       
-## [64] MatrixModels_0.5-4  Rcpp_1.1.2          coda_0.19-4.1      
-## [67] nlme_3.1-171        checkmate_2.3.4     xfun_0.60          
-## [70] pkgconfig_2.0.3
+##  [1] tidyselect_1.2.1    psych_2.6.5         vipor_0.4.7        
+##  [4] farver_2.1.2        S7_0.2.2            fastmap_1.2.0      
+##  [7] digest_0.6.39       estimability_2.0.0  timechange_0.4.0   
+## [10] lifecycle_1.0.5     survival_3.8-11     magrittr_2.0.5     
+## [13] compiler_4.6.1      rlang_1.3.0         tools_4.6.1        
+## [16] utf8_1.2.6          yaml_2.3.12         data.table_1.18.6.1
+## [19] knitr_1.51          mnormt_2.1.2        xml2_1.6.0         
+## [22] RColorBrewer_1.1-3  withr_3.0.3         numDeriv_2016.8-1.1
+## [25] grid_4.6.1          stats4_4.6.1        JAPackage_0.1.0    
+## [28] xtable_1.8-8        scales_1.4.0        MASS_7.3-66        
+## [31] insight_1.5.3       cli_3.6.6           mvtnorm_1.4-2      
+## [34] rmarkdown_2.32      reformulas_0.4.4    generics_0.1.4     
+## [37] otel_0.2.0          tzdb_0.5.0          commonmark_2.0.0   
+## [40] ggbeeswarm_0.7.3    minqa_1.2.8         polynom_1.4-1      
+## [43] splines_4.6.1       parallel_4.6.1      vctrs_0.7.3        
+## [46] boot_1.3-32         jsonlite_2.0.0      SparseM_1.84-2     
+## [49] confintr_1.0.2      litedown_0.11       hms_1.1.4          
+## [52] pbkrtest_0.5.5      beeswarm_0.4.0      glue_1.8.1         
+## [55] nloptr_2.2.1        ggtext_0.2.0        stringi_1.8.9      
+## [58] gtable_0.3.6        pillar_1.11.1       htmltools_0.5.9    
+## [61] quantreg_6.1        R6_2.6.1            Rdpack_2.6.6       
+## [64] evaluate_1.0.5      lattice_0.23-1      markdown_2.0       
+## [67] rbibutils_2.4.1     backports_1.5.1     gridtext_0.1.6     
+## [70] broom_1.0.13        MatrixModels_0.5-4  Rcpp_1.1.2         
+## [73] checkmate_2.3.4     coda_0.19-4.1       nlme_3.1-171       
+## [76] mgcv_1.9-4          xfun_0.60           pkgconfig_2.0.3
 ```

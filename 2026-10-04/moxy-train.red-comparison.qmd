@@ -337,3 +337,10 @@ extract_intervals(
     plot()
 ```
 
+```{r}
+#| label: session-info
+#| code-summary: "Show sessionInfo()"
+#| collapse: true
+
+sessionInfo()
+```
