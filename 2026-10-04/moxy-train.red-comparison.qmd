@@ -72,6 +72,8 @@ Dashed lines in the plot below
 
 :::
 
+![Simultaneous recording with Moxy (proximal) and Train.Red (distal) on right VL. Occlusions performed with Hokanson rapid inflate system.](<figures/2026-09-29 16.33.24.jpg>){width=80% fig-align="center"}
+
 ```{r}
 #| label: setup
 #| code-summary: "Show setup code"

@@ -59,6 +59,10 @@ rescaled to an equivalent range.
 >
 > Dashed lines in the plot below
 
+<img src="figures/2026-09-29%2016.33.24.jpg" style="width:80.0%"
+data-fig-align="center"
+alt="Simultaneous recording with Moxy (proximal) and Train.Red (distal) on right VL. Occlusions performed with Hokanson rapid inflate system." />
+
 ``` r
 library(dplyr)
 library(ggplot2)
